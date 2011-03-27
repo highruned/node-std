@@ -1,5 +1,4 @@
 core = std('import core')
-framework = std('import framework')
 
 class post
 	constructor: (@name) ->
@@ -16,14 +15,6 @@ class post
 	text: ''
 	views: 0
 
-post:: = core.object.create(
-	core.object::,
-	core.trait.compose(
-		core.trait.override(
-			core.trait(post::),
-			core.trait(framework.mvc.model::)
-		)
-	)
-)
+post:: = core.mixin(post::, core.object::)
 
 exports.post = post

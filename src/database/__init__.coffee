@@ -1,0 +1,1 @@
+exports.orm = std_require('database.orm').orm

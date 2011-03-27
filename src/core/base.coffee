@@ -1,5 +1,5 @@
 core = std('import core')
-    
+
 class base
 	constructor: () ->
 

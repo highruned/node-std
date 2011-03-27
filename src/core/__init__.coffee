@@ -4,4 +4,4 @@ exports.trait = std_require('core.trait').trait #include('./System/Trait.js', fa
 exports.backbone = std_require('core.backbone').backbone
 exports.utility = std_require('core.utility').utility
 exports.base = std_require('core.base').base
-   
+exports.mixin = std_require('core.mixin').mixin
