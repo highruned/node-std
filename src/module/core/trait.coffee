@@ -1,0 +1,1 @@
+exports.trait = require('traits').Trait

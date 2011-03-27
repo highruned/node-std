@@ -1,0 +1,1 @@
+exports.post = include('blog.post').post
