@@ -1,4 +1,4 @@
-core = include('core')
+core = std('import core')
     
 class base
 	constructor: () ->

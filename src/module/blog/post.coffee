@@ -1,5 +1,5 @@
-core = include('core')
-site = include('site')
+core = std('import core')
+site = std('import site')
 
 class post
 	constructor: (@name) ->

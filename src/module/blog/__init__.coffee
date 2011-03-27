@@ -1,1 +1,1 @@
-exports.post = include('blog.post').post
+exports.post = std_require('blog.post').post

@@ -1,19 +1,19 @@
-core = include('core')
+core = std('import core')
 
-class Controller
+class controller
 	constructor: () ->
 
-Controller:: = Object.create(
-	Object::,
-	core.Trait.compose(
-		core.Trait.override(
-			core.Trait(Controller::),
-			core.Trait(core.Base::),   
-			core.Trait(core.Backbone.Controller::)
+controller:: = core.object.create(
+	core.object::,
+	core.trait.compose(
+		core.trait.override(
+			core.trait(controller::),
+			core.trait(core.base::),   
+			core.trait(core.backbone.controller::)
 		)
 	)
 )
 
-core.Utility.bind(core.Backbone.Controller, Controller::)()
+core.utility.bind(core.backbone.controller, controller::)()
 	
-exports.Controller = Controller
+exports.controller = controller

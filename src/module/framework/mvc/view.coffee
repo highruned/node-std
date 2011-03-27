@@ -1,19 +1,19 @@
-core = include('core')
+core = std('import core')
 
-class View
+class view
 	constructor: () ->
 
-View:: = Object.create(
-	Object::,
-	core.Trait.compose(
-		core.Trait.override(
-			core.Trait(View::),
-			core.Trait(core.Base::),
-			core.Trait(core.Backbone.View::)
+view:: = core.object.create(
+	core.object::,
+	core.trait.compose(
+		core.trait.override(
+			core.trait(view::),
+			core.trait(core.base::),   
+			core.trait(core.backbone.view::)
 		)
 	)
 )
 
-core.Utility.bind(core.Backbone.View, View::)()
+core.utility.bind(core.backbone.view, view::)()
 	
-exports.View = View
+exports.view = view

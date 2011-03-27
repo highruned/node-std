@@ -1,5 +1,5 @@
-core = include('core')
-framework = include('framework')
+core = std('import core')
+framework = std('import framework')
 
 class post
 	constructor: (@name) ->

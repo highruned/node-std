@@ -1,5 +1,6 @@
 (function() {
   exports.mvc = {
-    model: include('framework.mvc.model').model
+    model: std_require('framework.mvc.model').model,
+    controller: std_require('framework.mvc.controller').controller
   };
 }).call(this);

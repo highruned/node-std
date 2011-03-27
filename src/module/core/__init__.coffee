@@ -1,7 +1,7 @@
-exports.string = include('core.string').string
-exports.object = include('core.object').object
-exports.trait = include('core.trait').trait #include('./System/Trait.js', false).Trait
-exports.backbone = include('core.backbone').backbone
-exports.utility = include('core.utility').utility
-exports.base = include('core.base').base
+exports.string = std_require('core.string').string
+exports.object = std_require('core.object').object
+exports.trait = std_require('core.trait').trait #include('./System/Trait.js', false).Trait
+exports.backbone = std_require('core.backbone').backbone
+exports.utility = std_require('core.utility').utility
+exports.base = std_require('core.base').base
    

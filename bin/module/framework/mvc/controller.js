@@ -1,11 +1,11 @@
 (function() {
-  var Controller, core;
-  core = include('core');
-  Controller = (function() {
-    function Controller() {}
-    return Controller;
+  var controller, core;
+  core = std('import core');
+  controller = (function() {
+    function controller() {}
+    return controller;
   })();
-  Controller.prototype = Object.create(Object.prototype, core.Trait.compose(core.Trait.override(core.Trait(Controller.prototype), core.Trait(core.Base.prototype), core.Trait(core.Backbone.Controller.prototype))));
-  core.Utility.bind(core.Backbone.Controller, Controller.prototype)();
-  exports.Controller = Controller;
+  controller.prototype = core.object.create(core.object.prototype, core.trait.compose(core.trait.override(core.trait(controller.prototype), core.trait(core.base.prototype), core.trait(core.backbone.controller.prototype))));
+  core.utility.bind(core.backbone.controller, controller.prototype)();
+  exports.controller = controller;
 }).call(this);

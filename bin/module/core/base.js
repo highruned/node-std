@@ -1,6 +1,6 @@
 (function() {
   var base, core;
-  core = include('core');
+  core = std('import core');
   base = (function() {
     function base() {}
     return base;

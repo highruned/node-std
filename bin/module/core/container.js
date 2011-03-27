@@ -1,6 +1,6 @@
 (function() {
   var container, core;
-  core = include('core');
+  core = std('core');
   container = (function() {
     function container() {}
     return container;

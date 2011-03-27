@@ -1,3 +1,3 @@
 (function() {
-  exports.post = include('site.post').post;
+  exports.post = std_require('site.post').post;
 }).call(this);

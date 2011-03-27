@@ -1,4 +1,4 @@
-core = include('core')
+core = std('core')
 
 class container
 	constructor: () ->

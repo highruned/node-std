@@ -1,7 +1,7 @@
 (function() {
   var core, framework, post;
-  core = include('core');
-  framework = include('framework');
+  core = std('import core');
+  framework = std('import framework');
   post = (function() {
     function post(name) {
       this.name = name;

@@ -1,4 +1,4 @@
 exports.mvc = 
-	model: include('framework.mvc.model').model 
-	#View: include('framework.MVC.View').View
-	#Controller: include('framework.MVC.Controller').Controller
+	model: std_require('framework.mvc.model').model 
+	#view: std_require('framework.mvc.view').view
+	controller: std_require('framework.mvc.controller').controller
