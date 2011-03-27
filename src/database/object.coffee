@@ -1,0 +1,2 @@
+core = std('import core')
+

@@ -1,3 +1,14 @@
+std = () ->
+
+###
+Usage:
+	std = require('std').std
+	std.add_path('./modules')
+	std('import my_module')
+###
+std::add_path = (path) ->
+	@paths = path
+
 ###
 Use to import packages or package contents from the STD.
 

@@ -1,0 +1,10 @@
+{
+	"name": "std",
+	"version": "0.0.5",
+	"author": "Eric Muyser",
+	"main": "./lib/std.js",
+	"repository": {
+		"type": "git", 
+		"url": "http://github.com/ericmuyser/node-std.git"
+	}
+}
