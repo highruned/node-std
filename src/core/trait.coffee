@@ -1,1 +1,3 @@
-exports.trait = require('traits').Trait
+trait = require('traits').Trait
+
+exports.trait = trait

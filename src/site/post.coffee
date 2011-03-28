@@ -1,19 +1,20 @@
 core = std('import core')
 
 class post
-	constructor: (@name) ->
+	constructor: () ->
 
 	move: (meters) ->
-		console.log @name + " moved " + meters + "m."
+		console.log @title + " moved " + meters + "m."
 
 	climb: (meters) ->
-		console.log @name + " climbed " + meters + "m."
+		console.log @title + " climbed " + meters + "m."
 	
 	up_votes: 0
 	down_votes: 0
 	rating: 0
-	text: ''
+	content: ''
 	views: 0
+	title: ''
 
 post:: = core.mixin(post::, core.object::)
 

@@ -10,6 +10,11 @@ Usage:
 std = (path, use_modules = true) ->
 	fs = require('fs')
 	
+	for path in std::paths
+		do(path) ->
+			fs.readFile path, (err, contents) ->
+				#compile path, contents.toString()
+	
 	if(path.substr(0, 8) == 'import *')
 		return 
 			core: require(__dirname + '/' + 'core' + '/__init__.js')
@@ -36,6 +41,9 @@ std = (path, use_modules = true) ->
 		
 		return require(path)
 
+		
+std::paths = []
+
 ###
 Usage:
 	std = require('std').std
@@ -45,6 +53,11 @@ Usage:
 std::add_path = (path) ->
 	@paths = path
 
+std::config = 
+	
+	
+	
+	
 ###
 Use internally because you can't std() within a package's __init__
 ###

@@ -1,14 +1,16 @@
 # node-std
-The idea of this library is to provide you with all the essential building blocks you need to get your node on. Extensive. Consistent. Modular. Grab what you need; ignore the rest.
+The idea of this library is to provide you with all the essential building blocks you need to get your node on. Extensive. Consistent. Structured. Modular. Grab what you need; ignore the rest.
+
+Like it? Don't like it? It's all about picking your poison.
 
 Included libraries:
 1. core - Essentials. Mixin your way to victory!
 1. blog
 1. cms
-1. database - Persistency at its finest.
+1. database - We all need some persistency in our lives.
 1. debug - Write to me.
 1. forum
-1. framework - MVC? HMVC? Your choice.
+1. framework - MVC? HMVC? MVVM? Your choice.
 1. site - Startup.
 1. wiki
 
@@ -52,7 +54,7 @@ Command to watch and compile CoffeeScript:
 ### Standard
 
 #### Naming Convention
-All code is to be lower-case using underscores for logical separation. Everything is lower-cased and underscored: variables, functions, classes, directories, files, and so on.
+All code is to be lower-case using underscores for logical separation. Everything is lower-cased and underscored: variables, functions, classes, directories, files, event names, table names, and so on.
 We are aware JavaScript, and by consequence Node.js is traditionally pascal/camel case. Sorry.
 
 ### Unit Testing
@@ -66,4 +68,4 @@ Major thanks to the CoffeeScript team.
 
 Uses the following Node modules: backbone, underscore, connect, socket.io, node.js, mongoose, haml, less
 
-Draws inspiration from the following projects: Boost, OGRE, haXe, Zend, Doctrine, Rails, jQuery, MaNGOS, as well as Phpr, C#.NET
+Draws inspiration from the following projects: Boost, OGRE, haXe, Rails, Zend, Doctrine, jQuery, php.js, MaNGOS, as well as Phpr, C#.NET

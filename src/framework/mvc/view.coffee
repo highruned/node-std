@@ -1,4 +1,5 @@
 core = std('import core')
+backbone = require('backbone')
 
 class view
 	constructor: () ->
@@ -9,11 +10,11 @@ view:: = core.object.create(
 		core.trait.override(
 			core.trait(view::),
 			core.trait(core.base::),   
-			core.trait(core.backbone.view::)
+			core.trait(backbone.view::)
 		)
 	)
 )
 
-core.utility.bind(core.backbone.view, view::)()
+core.utility.bind(backbone.view, view::)()
 	
 exports.view = view

@@ -1,18 +1,11 @@
 core = std('import core')
+backbone = require('backbone')
 
 class model
 	constructor: () ->
 
-model:: = core.object.create(
-	core.object::,
-	core.trait.compose(
-		core.trait.override(
-			core.trait(core.base::),
-			core.trait(core.backbone.model::) 
-		)
-	)
-)
+model:: = core.mixin(core.base::, backbone.model::)
 
-core.utility.bind(core.backbone.model, model::)()
+core.utility.bind(backbone.model, model::)()
 	
 exports.model = model

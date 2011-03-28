@@ -1,0 +1,1 @@
+exports.file = std_require('os.file').file

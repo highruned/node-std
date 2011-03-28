@@ -1,4 +1,5 @@
 core = std('import core')
+backbone = require('backbone')
 
 class controller
 	constructor: () ->
@@ -9,11 +10,11 @@ controller:: = core.object.create(
 		core.trait.override(
 			core.trait(controller::),
 			core.trait(core.base::),   
-			core.trait(core.backbone.controller::)
+			core.trait(backbone.controller::)
 		)
 	)
 )
 
-core.utility.bind(core.backbone.controller, controller::)()
+core.utility.bind(backbone.controller, controller::)()
 	
 exports.controller = controller
