@@ -1,0 +1,12 @@
+{
+	'name': 'std-blog',
+	'version': '0.0.5',
+	'author': 'Eric Muyser',
+	'dependencies': {
+		'std-site': '>= 0.0.5'
+	},
+	'repository': {
+		'type': 'git', 
+		'url': 'http://github.com/ericmuyser/node-std-blog.git'
+	}
+}
