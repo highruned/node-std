@@ -1,3 +1,5 @@
+core = std('core')
+
 datetime = Date
 
 datetime::now = () ->

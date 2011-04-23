@@ -9,19 +9,20 @@ Usage:
 ###
 std = (path, use_modules = true) ->
 	fs = require('fs')
-	
+	###
 	for path in std::paths
 		do(path) ->
 			fs.readFile path, (err, contents) ->
 				#compile path, contents.toString()
-	
-	if(path.substr(0, 8) == 'import *')
-		return 
+	###
+	if path.substr(0, 8) == 'import *'
+		return (
 			core: require(__dirname + '/' + 'core' + '/__init__.js')
 			site: require(__dirname + '/' + 'site' + '/__init__.js')
 			blog: require(__dirname + '/' + 'blog' + '/__init__.js')
 			framework: require(__dirname + '/' + 'framework' + '/__init__.js')
 			database: require(__dirname + '/' + 'database' + '/__init__.js')
+		)
 	else
 		if(use_modules)
 			try
@@ -53,11 +54,7 @@ Usage:
 std::add_path = (path) ->
 	@paths = path
 
-std::config = 
-	
-	
-	
-	
+
 ###
 Use internally because you can't std() within a package's __init__
 ###

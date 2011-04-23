@@ -2,10 +2,10 @@ core = std('import core')
 
 class timestamp
 	constructor: () ->
-		@bind('before_persist', () =>
+		@bind 'before_persist', () =>
 			@created_at.update()
 	
-		@bind('before_update', () =>
+		@bind 'before_update', () =>
 			@updated_at.update()
 		
 	created_at: core.datetime

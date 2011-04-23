@@ -4,10 +4,10 @@ class service
 	constructor: () ->
 		
 	setup_model: (model) ->
-		model.service = this
+		model.service = @
 		
-		model.bind 'change' (property) =>
-			@adapter.
+		model.bind 'change', (property) =>
+			@adapter
 		
 		# hack
 		model.contractors.bind 'add', (item) =>
@@ -22,7 +22,7 @@ class service
 		
 		@trigger('before_save')
 		
-		@adapter.save(model.id, model.serialize(), (err, res) ->
+		@adapter.save model.id, model.serialize(), (err, res) ->
 			if(res.ok)
 				model.id = res.id
 				model.revision = res.rev

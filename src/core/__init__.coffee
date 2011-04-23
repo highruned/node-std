@@ -6,4 +6,4 @@ exports.utility = std_require('core.utility').utility
 exports.base = std_require('core.base').base
 exports.mixin = std_require('core.mixin').mixin
 
-exports.3rd = std_require('core.3rd')
+exports['3rd'] = std_require('core.3rd')
