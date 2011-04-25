@@ -7,4 +7,11 @@ exports.config =
 exports.trace = std_require('debug.trace').trace
 
 exports.write = (message, level) ->
+	if(!console?)
+		window.console =
+			log: () ->
+		
+		window.debug = 
+			info: () ->
+	
 	console.log message

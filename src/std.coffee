@@ -1,11 +1,3 @@
-if(!console?)
-	console =
-		log: () ->
-	
-	debug = 
-		info: () ->
-			
-
 ###
 Use to import packages or package contents from the STD.
 
@@ -39,18 +31,16 @@ std = (path, use_modules = true) ->
 					path = path.substr(7)
 			
 				new_path = './' + path.replace(/\./g, '/') + '.js'
-				console.log 1, new_path
+
 				return require(new_path)
 			catch e
 				if e.message.substr(0, 'Cannot find module'.length) != 'Cannot find module'
 					throw e
 				
 				new_path = './' + path.replace(/\./g, '/') + '/__init__.js'
-				console.log 2, new_path
+
 				return require(new_path)
-	
-		console.log('./' + 'framework' + '/__init__.js')
-		
+
 		return require(path)
 
 		
@@ -75,14 +65,14 @@ std_import = (path, use_modules = true) ->
 	if(use_modules)
 		try
 			new_path = './' + path.replace(/\./g, '/') + '.js'
-			console.log 3, new_path
+
 			return require(new_path)
 		catch e
 			if e.message.substr(0, 'Cannot find module'.length) != 'Cannot find module'
 				throw e
 				
 			new_path = './' + path.replace(/\./g, '/') + '/__init__.js'
-			console.log 4, new_path
+
 			return require(new_path)
 
 		return require(path)
@@ -91,6 +81,8 @@ if global?
 	master = global
 else if window?
 	master = window
+
+master['window'] = master;
 
 exports.std = master['std'] = std
 exports.std_require = exports.std_import = master['std_import'] = master['std_require'] = std_import

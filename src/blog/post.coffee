@@ -5,20 +5,11 @@ class post
 	constructor: (@name) ->
 
 	move: (millimeters) ->
-		console.log @name + " moved " + millimeters + "mm."
+		debug.trace @name + " moved " + millimeters + "mm."
   
 	prompt_color: () ->
     @set color: '#fff'
   
-  
-post:: = core.object.create(
-	core.object::,
-	core.trait.compose(
-		core.trait.override(
-			core.trait(post::),
-			core.trait(site.post::)    
-		)
-	)
-)
+post:: = core.mixin post::, site.post::
 
 exports.post = post
