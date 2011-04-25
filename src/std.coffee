@@ -21,13 +21,14 @@ std = (path, use_modules = true) ->
 			core: require('./' + 'core' + '/__init__.js')
 			site: require('./' + 'site' + '/__init__.js')
 			blog: require('./' + 'blog' + '/__init__.js')
+			debug: require('./' + 'debug' + '/__init__.js')
 			framework: require('./' + 'framework' + '/__init__.js')
 			database: require('./' + 'database' + '/__init__.js')
 		)
 	else
 		if(use_modules)
 			try
-				if(path.substr(0, 7) == 'import ')
+				if path.substr(0, 7) == 'import '
 					path = path.substr(7)
 			
 				new_path = './' + path.replace(/\./g, '/') + '.js'
@@ -85,4 +86,4 @@ else if window?
 master['window'] = master;
 
 exports.std = master['std'] = std
-exports.std_require = exports.std_import = master['std_import'] = master['std_require'] = std_import
+exports.std_import = master['std_import'] = std_import
