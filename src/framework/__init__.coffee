@@ -1,1 +1,1 @@
-exports.mvc = std_require('framework.mvc').mvc 
+exports.mvc = std_import('framework.mvc') 

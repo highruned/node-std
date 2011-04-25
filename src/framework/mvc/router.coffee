@@ -1,11 +1,15 @@
 core = std('core')
 
-classs router
+class router
 
 	run: () ->
 		routes.foreach () ->
 			
+	add_path: (path) ->
+		@routes.add path
+	
+	routes: new core.collection()
 
-	routes: core.collection
+router:: = core.mixin(router::, core.base::)
 
 exports.router = router

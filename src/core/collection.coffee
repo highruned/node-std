@@ -6,12 +6,15 @@ class collection
 	
 	iterate: () ->
 	
-	#add: () ->
+	add: (item) ->
+		@items.push item
 	
 	#remove: () ->
+	
+	items: []
 
-collection:: = core.mixin(collection::, core.base::, backbone.collection::)
+collection:: = core.mixin(collection::, core.base::, backbone.Collection::)
 
-core.utility.bind(backbone.collection, collection::)()
+core.utility.bind(backbone.Collection, collection::)()
 
 exports.collection = collection

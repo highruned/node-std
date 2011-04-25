@@ -1,12 +1,19 @@
 {
-	'name': 'std',
-	'version': '0.0.5',
-	'author': 'Eric Muyser',
-	'dependencies': {
-		'underscore': '>= 1.1.5'
+  "name": "std",
+  "description": "STD",
+  "version": "0.0.5",
+  "homepage": "http://github.com/ericmuyser/node-std",
+  "repository": {
+    "url": ""
+  },
+	"dependencies": {
+		"underscore": ">= 1.1.5",
+		"connect": ">= 1.3.0",
+		"backbone": ">= 0.3.3"
 	},
-	'repository': {
-		'type': 'git', 
-		'url': 'http://github.com/ericmuyser/node-std.git'
-	}
+  "author": "Eric Muyser <eric@muyser.com> (http://eric.muyser.com/)",
+  "main": "lib/std.js",
+  "engines": {
+    "node": "*"
+  }
 }

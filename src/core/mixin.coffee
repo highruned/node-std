@@ -1,15 +1,18 @@
 core = std('import core')
 
 mixin = () ->
-	result = core.object.create(
-		core.object::,
+	for argument, i in arguments
+		arguments[i] = core.trait(argument)
+	
+	result = Object.create(
+		Object::,
 		core.trait.compose(
-			core.trait.override.call(arguments)
+			core.trait.override.apply(null, arguments)
 		)
 	)
-	
-	result::create = (arguments...) ->
-		return new result(arguments)
+
+	result.create = (arguments...) ->
+		return new result(arguments...)
 	
 	return result
 

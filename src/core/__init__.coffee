@@ -1,9 +1,10 @@
-exports.string = std_require('core.string').string
-exports.object = std_require('core.object').object
-exports.number = std_require('core.number').number
-exports.trait = std_require('core.trait').trait
-exports.utility = std_require('core.utility').utility
-exports.base = std_require('core.base').base
-exports.mixin = std_require('core.mixin').mixin
-
-exports['3rd'] = std_require('core.3rd')
+exports.third = std_import('core.third')
+exports.trait = std_import('core.trait').trait
+exports.mixin = std_import('core.mixin').mixin
+exports.object = std_import('core.object').object
+exports.array = std_import('core.array').array
+exports.string = std_import('core.string').string
+exports.number = std_import('core.number').number
+exports.utility = std_import('core.utility').utility
+exports.base = std_import('core.base').base
+exports.collection = std_import('core.collection').collection

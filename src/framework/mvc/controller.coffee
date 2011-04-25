@@ -4,17 +4,8 @@ backbone = require('backbone')
 class controller
 	constructor: () ->
 
-controller:: = core.object.create(
-	core.object::,
-	core.trait.compose(
-		core.trait.override(
-			core.trait(controller::),
-			core.trait(core.base::),   
-			core.trait(backbone.controller::)
-		)
-	)
-)
+controller:: = core.mixin(controller::, core.base::, backbone.Controller::)
 
-core.utility.bind(backbone.controller, controller::)()
+core.utility.bind(backbone.Controller, controller::)()
 	
 exports.controller = controller

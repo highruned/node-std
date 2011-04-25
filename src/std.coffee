@@ -1,3 +1,11 @@
+if(!console?)
+	console =
+		log: () ->
+	
+	debug = 
+		info: () ->
+			
+
 ###
 Use to import packages or package contents from the STD.
 
@@ -9,6 +17,7 @@ Usage:
 ###
 std = (path, use_modules = true) ->
 	fs = require('fs')
+	
 	###
 	for path in std::paths
 		do(path) ->
@@ -17,11 +26,11 @@ std = (path, use_modules = true) ->
 	###
 	if path.substr(0, 8) == 'import *'
 		return (
-			core: require(__dirname + '/' + 'core' + '/__init__.js')
-			site: require(__dirname + '/' + 'site' + '/__init__.js')
-			blog: require(__dirname + '/' + 'blog' + '/__init__.js')
-			framework: require(__dirname + '/' + 'framework' + '/__init__.js')
-			database: require(__dirname + '/' + 'database' + '/__init__.js')
+			core: require('./' + 'core' + '/__init__.js')
+			site: require('./' + 'site' + '/__init__.js')
+			blog: require('./' + 'blog' + '/__init__.js')
+			framework: require('./' + 'framework' + '/__init__.js')
+			database: require('./' + 'database' + '/__init__.js')
 		)
 	else
 		if(use_modules)
@@ -29,16 +38,18 @@ std = (path, use_modules = true) ->
 				if(path.substr(0, 7) == 'import ')
 					path = path.substr(7)
 			
-				new_path = __dirname + '/' + path.replace(/\./g, '/') + '.js'
-				
-				if(fs.statSync(new_path).isFile())
-					path = new_path
-				else
-					path = __dirname + '/' + path.replace(/\./g, '/') + '/__init__.js'
+				new_path = './' + path.replace(/\./g, '/') + '.js'
+				console.log 1, new_path
+				return require(new_path)
 			catch e
-				path = __dirname + '/' + path.replace(/\./g, '/') + '/__init__.js'
+				if e.message.substr(0, 'Cannot find module'.length) != 'Cannot find module'
+					throw e
+				
+				new_path = './' + path.replace(/\./g, '/') + '/__init__.js'
+				console.log 2, new_path
+				return require(new_path)
 	
-		console.log('std', use_modules, path)
+		console.log('./' + 'framework' + '/__init__.js')
 		
 		return require(path)
 
@@ -58,23 +69,28 @@ std::add_path = (path) ->
 ###
 Use internally because you can't std() within a package's __init__
 ###
-std_require = (path, use_modules = true) ->
+std_import = (path, use_modules = true) ->
 	fs = require('fs')
 
 	if(use_modules)
 		try
-			new_path = __dirname + '/' + path.replace(/\./g, '/') + '.js'
-			
-			if(fs.statSync(new_path).isFile())
-				path = new_path
-			else
-				path = __dirname + '/' + path.replace(/\./g, '/') + '/__init__.js'
+			new_path = './' + path.replace(/\./g, '/') + '.js'
+			console.log 3, new_path
+			return require(new_path)
 		catch e
-			path = __dirname + '/' + path.replace(/\./g, '/') + '/__init__.js'
-			
-	console.log('std_require', use_modules, path)
-	
-	return require(path)
+			if e.message.substr(0, 'Cannot find module'.length) != 'Cannot find module'
+				throw e
+				
+			new_path = './' + path.replace(/\./g, '/') + '/__init__.js'
+			console.log 4, new_path
+			return require(new_path)
 
-exports.std = global['std'] = std
-exports.std_require = global['std_require'] = std_require
+		return require(path)
+
+if global?
+	master = global
+else if window?
+	master = window
+
+exports.std = master['std'] = std
+exports.std_require = exports.std_import = master['std_import'] = master['std_require'] = std_import

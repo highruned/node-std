@@ -1,6 +1,14 @@
-object = Object
+core = std('core')
 
-object::to_array = () ->
-	return []
+class object
+	constructor: () ->
+	
+	to_array: () ->
+		return []
+
+	remove: (list, key) ->
+		delete list[key]
+
+object:: = core.mixin(object::, Object::)
 
 exports.object = object
