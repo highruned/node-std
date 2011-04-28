@@ -1,3 +1,5 @@
+fs = require 'fs'
+
 ###
 Use to import packages or package contents from the STD.
 
@@ -8,8 +10,6 @@ Usage:
 	string = std('from core import string')
 ###
 std = (path, use_modules = true) ->
-	fs = require('fs')
-	
 	###
 	for path in std::paths
 		do(path) ->
@@ -18,31 +18,31 @@ std = (path, use_modules = true) ->
 	###
 	if path.substr(0, 8) == 'import *'
 		return (
-			core: require('./' + 'core' + '/__init__.js')
-			site: require('./' + 'site' + '/__init__.js')
-			blog: require('./' + 'blog' + '/__init__.js')
-			debug: require('./' + 'debug' + '/__init__.js')
-			framework: require('./' + 'framework' + '/__init__.js')
-			database: require('./' + 'database' + '/__init__.js')
+			core: require './' + 'core' + '/__init__.js'
+			site: require './' + 'site' + '/__init__.js'
+			blog: require './' + 'blog' + '/__init__.js'
+			debug: require './' + 'debug' + '/__init__.js'
+			framework: require './' + 'framework' + '/__init__.js'
+			database: require './' + 'database' + '/__init__.js'
 		)
 	else
-		if(use_modules)
+		if use_modules
 			try
 				if path.substr(0, 7) == 'import '
-					path = path.substr(7)
+					path = path.substr 7
 			
 				new_path = './' + path.replace(/\./g, '/') + '.js'
-
-				return require(new_path)
+				
+				return require new_path
 			catch e
-				if e.message.substr(0, 'Cannot find module'.length) != 'Cannot find module'
+				if e.message != "Cannot find module '" + new_path + "'"
 					throw e
 				
 				new_path = './' + path.replace(/\./g, '/') + '/__init__.js'
+				
+				return require new_path
 
-				return require(new_path)
-
-		return require(path)
+		return require path
 
 		
 std::paths = []
@@ -56,34 +56,31 @@ Usage:
 std::add_path = (path) ->
 	@paths = path
 
-
 ###
 Use internally because you can't std() within a package's __init__
 ###
 std_import = (path, use_modules = true) ->
-	fs = require('fs')
-
-	if(use_modules)
+	if use_modules
 		try
 			new_path = './' + path.replace(/\./g, '/') + '.js'
-
-			return require(new_path)
+			
+			return require new_path
 		catch e
-			if e.message.substr(0, 'Cannot find module'.length) != 'Cannot find module'
+			if e.message != "Cannot find module '" + new_path + "'"
 				throw e
 				
 			new_path = './' + path.replace(/\./g, '/') + '/__init__.js'
+			
+			return require new_path
 
-			return require(new_path)
-
-		return require(path)
+		return require path
 
 if global?
 	master = global
 else if window?
 	master = window
 
-master['window'] = master;
+master['window'] = master
 
 exports.std = master['std'] = std
 exports.std_import = master['std_import'] = std_import

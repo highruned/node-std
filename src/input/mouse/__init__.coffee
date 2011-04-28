@@ -1,0 +1,1 @@
+exports.device = std_import('input.mouse.device').device

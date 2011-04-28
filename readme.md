@@ -14,6 +14,7 @@ Included libraries:
 1. site - Startup.  
 1. wiki  
 1. game  
+1. ...more!
 
 ## Installation  
 1. Run this command: `npm install std`. If you don't have NPM installed, you can get it *here* or download manually STD *here*.  
@@ -63,7 +64,7 @@ We are aware JavaScript, and by consequence Node.js is traditionally pascal/came
 You can find existing unit tests in the `test` directory.
 
 ## Projects using STD
-Nether [https://github.com/ericmuyser/node-nether](Nether)
+[Nether](https://github.com/ericmuyser/node-nether)
 
 ## Credits
 Major thanks to the CoffeeScript team.

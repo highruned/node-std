@@ -11,6 +11,6 @@ datetime::format = (format) ->
 	return core.third.strftime(format, timestamp)
 
 datetime::to_timestamp = () ->
-	return Math.floor(this.getTime() / 1000);
+	return Math.floor(@getTime() / 1000)
 
 exports.datetime = datetime
