@@ -1,4 +1,5 @@
-core = std('import core')
+core = std 'import core'
+math = std 'import math'
 
 class camera
 	constructor: () ->
@@ -6,11 +7,9 @@ class camera
 	viewport: 
 		width: 0
 		height: 0
-	position: 
-		x: 0
-		y: 0
+	position: new math.vector
 	target: null
 		
-camera:: = core.mixin(camera::, core.object::)
+camera:: = core.mixin camera::, core.object::
 
 exports.camera = camera

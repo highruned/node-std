@@ -77,7 +77,7 @@ var Trait = (function(){
         for (var i = 0, len = arr.length; i < len; i++) { fun(arr[i]); }
       };
   
-  var freeze = Object.freeze || function(obj) { return obj; };
+  var freeze = function(obj) { return obj; }; //Object.freeze || 
   var getPrototypeOf = Object.getPrototypeOf || function(obj) { 
     return Object.prototype;
   };

@@ -1,4 +1,4 @@
-core = std('import core')
+core = std 'import core'
 
 trait = core.third.trait
 

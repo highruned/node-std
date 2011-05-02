@@ -1,3 +1,13 @@
+if !global.console
+	global.console =
+		log: () ->
+
+if !global.debug
+	global.debug = 
+		info: console.log
+		error: console.log
+		warn: console.log
+
 exports.config =
 	trace:
 		silent: false
@@ -6,12 +16,11 @@ exports.config =
 
 exports.trace = std_import('debug.trace').trace
 
-exports.write = (message, level) ->
-	if(!console?)
-		window.console =
-			log: () ->
-		
-		window.debug = 
-			info: () ->
+exports.info = exports.write = (messages..., options = {level: 10}) ->
+	debug.info messages...
 	
-	console.log message
+exports.error = (messages..., options = {level: 10}) ->
+	debug.error messages...
+	
+exports.warn = (messages..., options = {level: 10}) ->
+	debug.warn messages...

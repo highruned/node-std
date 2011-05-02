@@ -12,8 +12,11 @@
 		"backbone": ">= 0.3.3"
 	},
   "author": "Eric Muyser <eric@muyser.com> (http://eric.muyser.com/)",
-  "main": "lib/std.js",
+  "main": "index",
   "engines": {
     "node": "*"
+  },
+  "directories" : {
+      "lib" : "./lib"
   }
 }

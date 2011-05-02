@@ -1,12 +1,17 @@
 core = std 'import core'
 game = std 'import game'
 math = std 'import math'
+debug = std 'import debug'
+gfx = std 'import gfx'
 
 class player
 	constructor: () ->
-		debug.write 'initializing player', this
+		debug.write '[game.player] Initializing player.', this, {level: 9}
 		
-		@update_position()
+		@set_position @position
+	
+	deconstructor: () ->
+		@model.remove()
 	
 	move: (direction) ->
 		if !@control
@@ -19,26 +24,31 @@ class player
 		@position.y += direction.y
 		
 		@set_position @position
+		
 	set_position: (@position) ->
+		@emit 'set_position'
+		
 		if @control
-			socket.send
+			@stream.send
 				command: 'update<player:position>'
 				position: @position
 			
-			world.camera.position = @position
-			
 			return
 		
-		debug.write 'updating player position', @position
-	draw: () ->
+		debug.write '[game.player] Updating player position.', @position, {level: 9}
+	
+	draw: (camera) ->
 		@model.css
-			left: ((@position.x - world.camera.position.x) * @speed) + world.camera.viewport.width / 2,
-			top: (((@position.y * -1) + world.camera.position.y) * @speed) + world.camera.viewport.height / 2
+			left: ((@position.x - camera.position.x) * @speed) + camera.viewport.width / 2,
+			top: (((@position.y * -1) + camera.position.y) * @speed) + camera.viewport.height / 2
 
 	model: null
 	control: false
 	position: new math.vector
 	speed: 50
+	stream: null
+	camera: new gfx.camera
+	id: null
 
 player:: = core.mixin player::, game.npc::
 

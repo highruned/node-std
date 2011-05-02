@@ -5,6 +5,6 @@ class npc
 	constructor: () ->
 
   
-npc:: = core.mixin(npc::, game.object::)
+npc:: = core.mixin npc::, game.object::
 
 exports.npc = npc

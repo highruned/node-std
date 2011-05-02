@@ -12,12 +12,12 @@ class trace
 		if options['level'] < debug.config.trace['level']
 			return # don't trace something we're not interested in
 	
-		message = core.string.format "[%s] %s\n", core.datetime.create().format('%F %T'), message
+		message = core.string.format "[%s] %s\n", core.datetime.create().format('%F %T'), messages
 
 		if !debug.config.trace['silent'] # do we want output?
-			console.log message...
+			debug.info messages...
 		
-		os.file.write message.join("\n")
+		os.file.write messages.join("\n")
 	
 	resource: null
 	

@@ -7,5 +7,5 @@ exports.string = std_import('core.string').string
 exports.number = std_import('core.number').number
 exports.utility = std_import('core.utility').utility
 exports.base = std_import('core.base').base
-exports.event_emitter = std_import('core.event_emitter').event_emitter
+exports.event_emitter = require('events').EventEmitter#std_import('core.event_emitter').event_emitter
 exports.collection = std_import('core.collection').collection

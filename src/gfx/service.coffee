@@ -6,6 +6,8 @@ class service
 			@emit 'frame'
 			
 			setTimeout update, 1000 / (60 * 2) # update at 60 fps
+		
+		update()
 
 service:: = core.mixin service::, core.event_emitter::
 

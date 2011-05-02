@@ -10,6 +10,8 @@ Usage:
 	string = std('from core import string')
 ###
 std = (path, use_modules = true) ->
+	#console.log path
+
 	###
 	for path in std::paths
 		do(path) ->
@@ -33,9 +35,13 @@ std = (path, use_modules = true) ->
 			
 				new_path = './' + path.replace(/\./g, '/') + '.js'
 				
+				if new_path.search('std') == 0 # fix browserify
+					new_path.replace('std', 'std/lib')
+				
 				return require new_path
 			catch e
-				if e.message != "Cannot find module '" + new_path + "'"
+				if e.message.replace('std/lib/', './') != "Cannot find module '" + new_path + "'"
+					console.log new_path
 					throw e
 				
 				new_path = './' + path.replace(/\./g, '/') + '/__init__.js'
@@ -60,13 +66,19 @@ std::add_path = (path) ->
 Use internally because you can't std() within a package's __init__
 ###
 std_import = (path, use_modules = true) ->
+	#console.log path
+	
 	if use_modules
 		try
 			new_path = './' + path.replace(/\./g, '/') + '.js'
 			
+			if new_path.search('std') == 0 # fix browserify
+				new_path.replace('std', 'std/lib')
+				
 			return require new_path
 		catch e
-			if e.message != "Cannot find module '" + new_path + "'"
+			if e.message.replace('std/lib/', './') != "Cannot find module '" + new_path + "'"
+				console.log new_path
 				throw e
 				
 			new_path = './' + path.replace(/\./g, '/') + '/__init__.js'
@@ -75,12 +87,23 @@ std_import = (path, use_modules = true) ->
 
 		return require path
 
-if global?
-	master = global
-else if window?
+if window?
 	master = window
-
-master['window'] = master
+	master['global'] = window
+else if global?
+	master = global
+	
+	jsdom = require 'jsdom'
+	
+	master['document'] = jsdom.jsdom('<html><head></head><body></body></html>')
+	master['window'] = document.createWindow()
+	master['jQuery'] = master['$'] = require('jquery').create(window)
+	
+	window.location.host = 'localhost'
+	
+	jQuery.ready()
+	
+	$.isReady = true
 
 exports.std = master['std'] = std
 exports.std_import = master['std_import'] = std_import
