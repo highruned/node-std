@@ -1,7 +1,9 @@
-core = std('core')
+core = std 'core'
 
 class router
-
+	constructor: () ->
+	
+	
 	run: () ->
 		routes.foreach () ->
 			
@@ -10,6 +12,6 @@ class router
 	
 	routes: new core.collection()
 
-router:: = core.mixin(router::, core.base::)
+router:: = core.mixin router::, core.base::
 
 exports.router = router

@@ -1,19 +1,11 @@
-core = std('import core')
 backbone = require('backbone')
+
+core = std 'import core'
 
 class view
 	constructor: () ->
 
-view:: = core.object.create(
-	core.object::,
-	core.trait.compose(
-		core.trait.override(
-			core.trait(view::),
-			core.trait(core.base::),   
-			core.trait(backbone.view::)
-		)
-	)
-)
+model:: = core.mixin view::, core.base::, backbone.View::
 
 core.utility.bind(backbone.view, view::)()
 	

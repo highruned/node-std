@@ -4,6 +4,7 @@ The idea of this library is to provide you with all the essential building block
 Like it? Don't like it? It's all about picking your poison.
 
 Included libraries:  
+
 1. core - Essentials. Mixin your way to victory!  
 1. blog  
 1. cms  
@@ -51,6 +52,7 @@ The API is still under construction, and may experience highly volatile changes.
 You can find STD in the `src` directory, which is CoffeeScript compiled down to JavaScript in the `lib` directory.
 
 Command to watch and compile CoffeeScript:  
+
 1. `cd node-std`  
 1. `coffee -wc -o lib src`  
 

@@ -18,40 +18,53 @@ std = (path, use_modules = true) ->
 			fs.readFile path, (err, contents) ->
 				#compile path, contents.toString()
 	###
-	if path.substr(0, 8) == 'import *'
-		return (
-			core: require './' + 'core' + '/__init__.js'
-			site: require './' + 'site' + '/__init__.js'
-			blog: require './' + 'blog' + '/__init__.js'
-			debug: require './' + 'debug' + '/__init__.js'
-			framework: require './' + 'framework' + '/__init__.js'
-			database: require './' + 'database' + '/__init__.js'
-		)
-	else
-		if use_modules
-			try
-				if path.substr(0, 7) == 'import '
-					path = path.substr 7
-			
-				new_path = './' + path.replace(/\./g, '/') + '.js'
+	success = false
+	console.log path
+	if use_modules
+		for base_path in std::paths
+			if path.substr(0, 8) == 'import *'
+				return (
+					core: require './' + 'core' + '/__init__.js'
+					site: require './' + 'site' + '/__init__.js'
+					blog: require './' + 'blog' + '/__init__.js'
+					debug: require './' + 'debug' + '/__init__.js'
+					framework: require './' + 'framework' + '/__init__.js'
+					database: require './' + 'database' + '/__init__.js'
+				)
+			else
+				try
+					if path.substr(0, 7) == 'import '
+						path = path.substr 7
 				
-				if new_path.search('std') == 0 # fix browserify
-					new_path.replace('std', 'std/lib')
-				
-				return require new_path
-			catch e
-				if e.message.replace('std/lib/', './') != "Cannot find module '" + new_path + "'"
+					new_path = base_path + path.replace(/\./g, '/') + '.js'
+					
+					if new_path.search('std') == 0 # fix browserify
+						new_path.replace('std', 'std/lib')
+					
+					success = require new_path
+				catch e
+					if e.message.replace('std/lib/', './') != "Cannot find module '" + new_path + "'"
+						
+						throw e
+					
+					new_path = base_path + path.replace(/\./g, '/') + '/__init__.js'
 					console.log new_path
-					throw e
-				
-				new_path = './' + path.replace(/\./g, '/') + '/__init__.js'
-				
-				return require new_path
-
-		return require path
-
+					try
+						success = require new_path
+						
+						break
+					catch e
+						continue
+	
+	if success == false
+		try
+			success = require path
+		catch e
+			throw "Cannot find module: " + path
+	debug.info success
+	return success
 		
-std::paths = []
+std::paths = ['./']
 
 ###
 Usage:
@@ -60,36 +73,51 @@ Usage:
 	std('import my_module')
 ###
 std::add_path = (path) ->
-	@paths = path
+	console.log path
+	@paths.push path
 
 ###
 Use internally because you can't std() within a package's __init__
 ###
 std_import = (path, use_modules = true) ->
 	#console.log path
-	
+	success = false
+	console.log path
 	if use_modules
-		try
-			new_path = './' + path.replace(/\./g, '/') + '.js'
-			
-			if new_path.search('std') == 0 # fix browserify
-				new_path.replace('std', 'std/lib')
+		for base_path in std::paths
+			try
+				new_path = base_path + path.replace(/\./g, '/') + '.js'
 				
-			return require new_path
-		catch e
-			if e.message.replace('std/lib/', './') != "Cannot find module '" + new_path + "'"
+				if new_path.search('std') == 0 # fix browserify
+					new_path.replace('std', 'std/lib')
 				console.log new_path
-				throw e
-				
-			new_path = './' + path.replace(/\./g, '/') + '/__init__.js'
-			
-			return require new_path
+				success = require new_path
+			catch e
+				if e.message.replace('std/lib/', './') != "Cannot find module '" + new_path + "'"
+					throw e
+					
+				new_path = base_path + path.replace(/\./g, '/') + '/__init__.js'
+				console.log new_path
+				try
+					success = require new_path
+					
+					break
+				catch e
+					continue
+	
+	if success == false
+		try
+			success = require path
+		catch e
+			throw "Cannot find module: " + path
+	debug.info success
 
-		return require path
+	return success
 
 if window?
 	master = window
 	master['global'] = window
+	master['env'] = 'browser'
 else if global?
 	master = global
 	
@@ -98,12 +126,18 @@ else if global?
 	master['document'] = jsdom.jsdom('<html><head></head><body></body></html>')
 	master['window'] = document.createWindow()
 	master['jQuery'] = master['$'] = require('jquery').create(window)
+	master['env'] = 'node'
 	
 	window.location.host = 'localhost'
 	
 	jQuery.ready()
 	
 	$.isReady = true
-
+	
+if !global.debug
+	global.debug = {
+		info: () ->
+	}
+	
 exports.std = master['std'] = std
 exports.std_import = master['std_import'] = std_import

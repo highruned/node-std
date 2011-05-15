@@ -1,1 +1,1 @@
-exports.socket = std_import('network.third.io-browser-client').io.Socket
+exports.socket = if global.env == 'node' then std_import('network.third.io-browser-server').io.Socket else std_import('network.third.io-browser-client').io.Socket

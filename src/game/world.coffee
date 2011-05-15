@@ -25,7 +25,7 @@ class world
 		@set_position @position
 		
 	add_object: (object) ->
-		debug.write '[game.world] Adding object.', object, {level: 9}
+		#debug.write '[game.world] Adding object.', object, {level: 9}
 		
 		if !object.id
 			return debug.warn '[game.world] Object id is null.', object, {level: 9}	
