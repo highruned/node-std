@@ -1,7 +1,7 @@
 # node-std
 The idea of this library is to provide you with all the essential building blocks you need to get your node on. Extensive. Consistent. Structured. Modular. Grab what you need; ignore the rest.
 
-Like it? Don't like it? It's all about picking your poison.
+Like it? Don't like it? It's all about picking your poison. 
 
 Included libraries:  
 
@@ -18,7 +18,7 @@ Included libraries:
 1. ...more!
 
 ## Installation  
-1. Run this command: `npm install std`. If you don't have NPM installed, you can get it *here* or download manually STD *here*.  
+1. Run this command: `npm install node-std`. If you don't have NPM installed, you can get it [here](https://github.com/ericmuyser/node-std/zipball/master), navigate to the `node-std` directory and run `npm install .`.
 1. Done!  
 
 ## Usage
@@ -51,10 +51,10 @@ The API is still under construction, and may experience highly volatile changes.
 ## Contribute
 You can find STD in the `src` directory, which is CoffeeScript compiled down to JavaScript in the `lib` directory.
 
-Command to watch and compile CoffeeScript:  
+Command to watch and compile:  
 
 1. `cd node-std`  
-1. `coffee -wc -o lib src`  
+1. `node bake.js`  
 
 ### Standard
 
@@ -66,11 +66,11 @@ We are aware JavaScript, and by consequence Node.js is traditionally pascal/came
 You can find existing unit tests in the `test` directory.
 
 ## Projects using STD
-[Nether](https://github.com/ericmuyser/node-nether)
+[Nether](https://github.com/ericmuyser/node-nether) (unreleased)
 
 ## Credits
 Major thanks to the CoffeeScript team.
 
-Uses the following Node modules: backbone, underscore, connect, socket.io, node.js, mongoose, haml, less
+Uses the following Node modules: backbone, underscore, connect, socket.io
 
-Draws inspiration from the following projects: Boost, OGRE, haXe, Rails, Zend, Doctrine, jQuery, php.js, MaNGOS, as well as Phpr, C#.NET
+Draws inspiration from the following projects: Boost, OGRE, haXe, Rails, Zend, Doctrine, jQuery, php.js, MaNGOS, as well as Phpr, and C#.NET
