@@ -1,6 +1,9 @@
 core = std 'import core'
 
-class vector
+
+base = core.mixin core.object
+
+class vector extends base
 	constructor: (@x = 0, @y = 0, @z = 0, @w = 0) ->
 
 	to_object: () ->
@@ -13,7 +16,5 @@ class vector
 	y: 0
 	z: 0
 	w: 0
-	
-vector:: = core.mixin vector::, core.object::
 
 exports.vector = vector

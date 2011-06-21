@@ -1,6 +1,8 @@
-core = std('core')
+core = std 'import core'
 
-class object
+base = core.mixin Object
+
+class object extends base
 	constructor: () ->
 	
 	to_array: () ->
@@ -8,7 +10,5 @@ class object
 
 	remove: (list, key) ->
 		delete list[key]
-
-object:: = core.mixin(object::, Object::)
 
 exports.object = object

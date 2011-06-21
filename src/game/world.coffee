@@ -4,7 +4,9 @@ math = std 'import math'
 gfx = std 'import gfx'
 debug = std 'import debug'
 
-class world
+base = core.mixin core.event_emitter
+
+class world extends base
 	constructor: () ->
 		update_camera_position = () =>
 			@camera.viewport.width = $(window).width()
@@ -12,10 +14,10 @@ class world
 		
 		update_camera_position()
 		
-
 		$(window).resize update_camera_position
 
 	init: (@model) ->
+		console.log @
 		@emit 'init'
 	
 	move: (direction) ->
@@ -98,6 +100,5 @@ class world
 	target: null
 	id: null
 	
-world:: = core.mixin world::, core.event_emitter::
 
 exports.world = world

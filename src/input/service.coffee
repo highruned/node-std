@@ -1,12 +1,9 @@
 core = std 'import core'
 
-class service
+base = core.mixin core.object
+
+class service extends base
 	constructor: () ->
-
-
-	
-	
-service:: = core.mixin service::, core.object::
 
 exports.service = service
 

@@ -1,10 +1,10 @@
-core = std('import core')
-backbone = require('backbone')
+core = std 'import core'
+backbone = require 'backbone'
 
-class controller
+base = core.mixin core.base, backbone.Controller
+
+class controller extends base
 	constructor: () ->
-
-controller:: = core.mixin(controller::, core.base::, backbone.Controller::)
 
 core.utility.bind(backbone.Controller, controller::)()
 	

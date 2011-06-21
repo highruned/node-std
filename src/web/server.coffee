@@ -1,7 +1,7 @@
-core = std('import core')
+core = std 'import core'
 
-class server
+base = core.mixin core.base
 
-server:: = std.core.mixin(server::, core.base::)
+class server extends base
 
 exports.server = server

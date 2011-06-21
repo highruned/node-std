@@ -1,9 +1,8 @@
 core = std 'import core'
 
-class device
-	constructor: () ->
+base = core.mixin core.event_emitter
 
-	
-device:: = core.mixin device::, core.event_emitter::
+class device extends base
+	constructor: () ->
 
 exports.device = device

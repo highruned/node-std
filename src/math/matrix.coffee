@@ -1,9 +1,9 @@
 core = std 'import core'
 math = std 'import math'
 
-class matrix
-	
+base = core.mixin math.vector
 
-matrix:: = core.mixin matrix::, math.vector::
+class matrix extends base
+	
 
 exports.matrix = matrix

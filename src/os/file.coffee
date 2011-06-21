@@ -1,7 +1,10 @@
-core = std('core')
+core = std 'core' 
+
 fs = require('fs')
 
-class file
+base = core.mixin core.base
+
+class file extends base
 	construct: (@path) ->
 		
 
@@ -12,7 +15,5 @@ class file
 					console.log('file closed')
 
 	path: null
-
-file:: = core.mixin(file::, core.base::)
 	
 exports.file = file

@@ -1,3 +1,16 @@
-var exec = require('child_process').exec;
+var spawn = require('child_process').spawn;
+var sys = require('sys');
 
-exec('coffee -wc -o /repo/node-std/lib /repo/node-std/src', function(error, stdout, stderr) {});
+var exec = function(command, params) {
+	var coffee = spawn(command, params);
+	
+	coffee.stdout.on('data', function(data) {
+	  sys.print(data.asciiSlice(0, data.length));
+	});
+	
+	coffee.stderr.on('data', function(data) {
+	  sys.print(data.asciiSlice(0, data.length));
+	});
+};
+
+exec('coffee', ['-wco', 'lib', 'src']);

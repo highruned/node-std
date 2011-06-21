@@ -1,4 +1,4 @@
-exports.third = std_import('core.third')
+exports.vendor = std_import('core.vendor')
 exports.trait = std_import('core.trait').trait
 exports.mixin = std_import('core.mixin').mixin
 exports.object = std_import('core.object').object

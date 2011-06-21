@@ -1,7 +1,9 @@
 core = std 'import core'
 input = std 'import input'
 
-class device
+base = core.mixin input.device
+
+class device extends base
 	constructor: () ->
 		@title[input.key.none] = "none"
 	
@@ -36,7 +38,5 @@ class device
 	
 	state: []
 	title: {}
-  
-device:: = core.mixin device::, input.device::
 
 exports.device = device

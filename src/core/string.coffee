@@ -17,6 +17,6 @@ string::to_int = () ->
 string::to_hex = () ->
 	return 0
 
-string::format = core.third.sprintf
+string::format = core.vendor.sprintf
 	
 exports.string = string

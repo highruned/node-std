@@ -1,10 +1,10 @@
-core = std('import core')
+core = std 'import core'
 
-class user_group
+base = core.mixin core.object
+
+class user_group extends base
 	constructor: () ->
 	
 	title: ''
-
-user_group:: = core.mixin(user_group::, core.object::)
 
 exports.user_group = user_group

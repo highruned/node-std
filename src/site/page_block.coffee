@@ -1,11 +1,12 @@
-core = std('import core')
+core = std 'import core'
 
-class page_block
+base = core.mixin core.object
+
+class page_block extends base
 	constructor: () ->
 	
 	content: ''
 	title: ''
 
-page_block:: = core.mixin(page_block::, core.object::)
 
 exports.page_block = page_block

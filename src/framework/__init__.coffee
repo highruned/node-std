@@ -1,1 +1,1 @@
-exports.mvc = std_import('framework.mvc') 
+exports.mvc = std_import('framework.mvc')

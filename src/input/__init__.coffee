@@ -4,5 +4,5 @@ exports.key = exports.keyboard.code
 exports.mouse = std_import('input.mouse')
 exports.touch = std_import('input.touch')
 
-std_import('input.third.jquery-jswipe')
-std_import('input.third.jquery-mousewheel')
+std_import('input.vendor.jquery-jswipe')
+std_import('input.vendor.jquery-mousewheel')

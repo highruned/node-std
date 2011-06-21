@@ -1,5 +1,5 @@
 core = std 'import core'
 
-trait = core.third.trait
+trait = core.vendor.trait
 
 exports.trait = trait

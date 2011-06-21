@@ -4,7 +4,9 @@ math = std 'import math'
 debug = std 'import debug'
 gfx = std 'import gfx'
 
-class player
+base = core.mixin game.npc
+
+class player extends base
 	constructor: () ->
 		debug.write '[game.player] Initializing player.', this, {level: 9}
 		
@@ -49,7 +51,5 @@ class player
 	stream: null
 	camera: new gfx.camera
 	id: null
-
-player:: = core.mixin player::, game.npc::
 
 exports.player = player

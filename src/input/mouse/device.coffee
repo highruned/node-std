@@ -2,7 +2,9 @@ core = std 'import core'
 input = std 'import input'
 math = std 'import math'
 
-class device
+base = core.mixin input.device
+
+class device extends base
 	constructor: () ->
 		$(document).bind 'mousewheel', (event, delta) =>
 			console.log delta
@@ -12,8 +14,6 @@ class device
 	   		@emit 'wheel_down', math.abs(delta)
 	    
 	    return false
-  
-device:: = core.mixin device::, input.device::
 
 exports.device = device
 

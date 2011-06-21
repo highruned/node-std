@@ -1,7 +1,10 @@
-core = std('core')
-backbone = require('backbone')
+core = std 'import core'
 
-class collection
+backbone = require 'backbone'
+
+base = core.mixin core.base, backbone.Collection
+
+class collection extends base
 	constructor: () ->
 	
 	iterate: () ->
@@ -9,11 +12,7 @@ class collection
 	add: (item) ->
 		@items.push item
 	
-	#remove: () ->
-	
 	items: []
-
-collection:: = core.mixin(collection::, core.base::, backbone.Collection::)
 
 core.utility.bind(backbone.Collection, collection::)()
 

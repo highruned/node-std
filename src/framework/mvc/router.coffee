@@ -1,7 +1,8 @@
-core = std 'core'
+core = std 'import core'
 
-class router
+base = core.mixin core.base
 
+class router extends base
 	run: () ->
 		routes.foreach () ->
 			
@@ -9,7 +10,5 @@ class router
 		@routes.add path
 	
 	routes: new core.collection()
-
-router:: = core.mixin router::, core.base::
 
 exports.router = router

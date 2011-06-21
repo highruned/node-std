@@ -44,7 +44,6 @@ std = (path, use_modules = true) ->
 					success = require new_path
 				catch e
 					if e.message.replace('std/lib/', './') != "Cannot find module '" + new_path + "'"
-						
 						throw e
 					
 					new_path = base_path + path.replace(/\./g, '/') + '/__init__.js'
@@ -54,6 +53,12 @@ std = (path, use_modules = true) ->
 						
 						break
 					catch e
+						if !e.message
+							throw e
+						
+						if e.message.replace('std/lib/', './') != "Cannot find module '" + new_path + "'"
+							throw e
+						
 						continue
 	
 	if success == false
@@ -93,6 +98,9 @@ std_import = (path, use_modules = true) ->
 				console.log new_path
 				success = require new_path
 			catch e
+				if !e.message
+					throw e
+			
 				if e.message.replace('std/lib/', './') != "Cannot find module '" + new_path + "'"
 					throw e
 					
@@ -103,6 +111,12 @@ std_import = (path, use_modules = true) ->
 					
 					break
 				catch e
+					if !e.message
+						throw e
+					
+					if e.message.replace('std/lib/', './') != "Cannot find module '" + new_path + "'"
+						throw e
+				
 					continue
 	
 	if success == false

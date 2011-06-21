@@ -1,6 +1,8 @@
-core = std('import core')
+core = std 'import core'
 
-class event_emitter
+base = core.mixin core.base
+
+class event_emitter extends base
 	constructor: () ->
 	
 	on: (name, callback) ->
@@ -11,7 +13,5 @@ class event_emitter
 			c1 params...
 	
 	events: {}
-	
-event_emitter:: = core.mixin event_emitter::, core.base::
 
 exports.event_emitter = event_emitter

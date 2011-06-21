@@ -1,9 +1,8 @@
 core = std 'import core'
 math = std 'import math'
 
-class quaternion
-	
+base = core.mixin math.vector
 
-quaternion:: = core.mixin quaternion::, math.vector::
+class quaternion extends base
 
 exports.quaternion = quaternion

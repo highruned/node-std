@@ -1,8 +1,10 @@
-core = std('import core')
-debug = std('import debug')
-fs = require('fs')
+core = std 'import core'
+debug = std 'import debug'
+fs = require 'fs'
 
-class trace
+base = core.mixin core.base
+
+class trace extends base
 	constructor: (messages..., options = {level: 10}) ->
 		@resources = new os.file debug.config.trace['path']
 		
@@ -20,7 +22,5 @@ class trace
 		os.file.write messages.join("\n")
 	
 	resource: null
-	
-trace:: = core.mixin trace::, core.base::
 
 exports.trace = trace

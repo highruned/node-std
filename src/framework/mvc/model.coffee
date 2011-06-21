@@ -1,10 +1,10 @@
-core = std('import core')
-backbone = require('backbone')
+core = std 'import core'
+backbone = require 'backbone'
 
-class model
+base = core.mixin core.base, backbone.Model
+
+class model extends base
 	constructor: () ->
-
-model:: = core.mixin(core.base::, backbone.Model::)
 
 core.utility.bind(backbone.Model, model::)()
 

@@ -1,7 +1,9 @@
 core = std 'import core'
 input = std 'import input'
 
-class device
+base = core.mixin input.device
+
+class device extends base
 	constructor: () ->
 		$(document).swipe
 			swipeLeft: () =>
@@ -9,8 +11,6 @@ class device
 			
 			swipeRight: () =>
 				@emit 'swipe_right'
-	
-device:: = core.mixin device::, input.device::
 
 exports.device = device
 
