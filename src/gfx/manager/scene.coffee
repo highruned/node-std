@@ -1,13 +1,13 @@
 core = std 'import core'
 
-class scene
+base = core.mixin core.object
+
+class scene extends base
 	constructor: () ->
 
 	update: () ->
 	
 	camera: null
 	world: null
-
-scene:: = core.mixin scene::, core.object::
 
 exports.scene = scene

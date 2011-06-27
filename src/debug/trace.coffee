@@ -6,7 +6,7 @@ base = core.mixin core.base
 
 class trace extends base
 	constructor: (messages..., options = {level: 10}) ->
-		@resources = new os.file debug.config.trace['path']
+		@resources = new os.file(debug.config.trace['path'])
 		
 		@write messages..., options
 	
@@ -14,7 +14,7 @@ class trace extends base
 		if options['level'] < debug.config.trace['level']
 			return # don't trace something we're not interested in
 	
-		message = core.string.format "[%s] %s\n", core.datetime.create().format('%F %T'), messages
+		message = core.string.format("[%s] %s\n", core.datetime.create().format('%F %T'), messages)
 
 		if !debug.config.trace['silent'] # do we want output?
 			debug.info messages...

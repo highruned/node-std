@@ -1,7 +1,9 @@
 core = std 'import core'
 game = std 'import game'
 
-class object
+base = core.mixin core.event_emitter
+
+class object extends base
 	constructor: () ->
 
 	draw: (camera) ->
@@ -13,7 +15,5 @@ class object
 			'top': top
 
 	model: null
-  
-object:: = core.mixin object::, core.event_emitter::
 
 exports.object = object

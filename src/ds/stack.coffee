@@ -1,13 +1,11 @@
-core = std('core')
-data_structure = std('data_structure')
+core = std 'import core'
+data_structure = std 'import data_structure'
 
-class stack
+class stack extends data_structure.queue
 	push: (item) ->
 		@adapter.lpush(@key, item)
 	
 	pop: () ->
 		return @adapter.lpop(@key)
-
-stack:: = core.mixin(stack::, data_structure.queue::)
 
 exports.stack = stack

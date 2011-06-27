@@ -1,10 +1,10 @@
-core = std('import core')
-game = std('import game')
+core = std 'import core'
+game = std 'import game'
 
-class npc
+base = core.mixin game.object
+
+class npc extends base
 	constructor: () ->
 
-  
-npc:: = core.mixin npc::, game.object::
 
 exports.npc = npc

@@ -17,7 +17,6 @@ class world extends base
 		$(window).resize update_camera_position
 
 	init: (@model) ->
-		console.log @
 		@emit 'init'
 	
 	move: (direction) ->
@@ -100,5 +99,4 @@ class world extends base
 	target: null
 	id: null
 	
-
 exports.world = world
