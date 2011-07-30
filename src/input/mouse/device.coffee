@@ -7,7 +7,6 @@ base = core.mixin input.device
 class device extends base
 	constructor: () ->
 		$(document).bind 'mousewheel', (event, delta) =>
-			console.log delta
 			if delta > 0
 	   		@emit 'wheel_up', math.abs(delta)
 	   	else

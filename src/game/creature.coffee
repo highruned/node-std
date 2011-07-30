@@ -1,10 +1,9 @@
 core = std('import core')
 game = std('import game')
 
-class monster
-	constructor: () ->
+base = core.mixin game.npc
 
-  
-monster:: = core.mixin(monster::, game.npc::)
+class monster extends base
+	constructor: () ->
 
 exports.monster = monster

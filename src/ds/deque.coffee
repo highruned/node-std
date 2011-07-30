@@ -1,7 +1,9 @@
-core = std('core')
-data_structure = std('data_structure')
+core = std 'core'
+data_structure = std 'data_structure'
 
-class deque
+base = core.mixin data_structure.queue
+
+class deque extends base
 	push_front: (item) ->
 		@adapter.rpush(@key, item)
 	
@@ -13,7 +15,5 @@ class deque
 	
 	pop_back: () ->
 		return @adapter.lpop(@key)
-
-deque:: = core.mixin(deque::, data_structure.queue::)
 
 exports.deque = deque

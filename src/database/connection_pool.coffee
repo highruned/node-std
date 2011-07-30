@@ -1,10 +1,10 @@
-core = std('import core')
+core = std 'import core'
 
-class connection_pool
+base = core.mixin core.base
+
+class connection_pool extends base
 	constructor: () ->
 	
 	connections: core.collection
-	
-connection_pool:: = core.mixin(connection_pool::, core.base::)
 
 exports.connection_pool = connection_pool

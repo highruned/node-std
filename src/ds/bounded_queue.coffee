@@ -1,7 +1,9 @@
-core = std('core')
-data_structure = std('data_structure')
+core = std 'core'
+data_structure = std 'data_structure'
 
-class bounded_queue
+base = core.mixin data_structure.queue
+
+class bounded_queue extends base
 	constructor: (key, size, adapter) ->
 		key ?= core.number.random()
 		size ?= 5
@@ -14,7 +16,5 @@ class bounded_queue
 	
 	pop: () ->
 		return @.pop()
-
-bounded_queue:: = core.mixin(bounded_queue::, data_structure.queue::)
 
 exports.bounded_queue = bounded_queue

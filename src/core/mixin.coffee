@@ -12,7 +12,6 @@ mixin = () ->
 		
 		traits[i] = core.trait(trait::)
 	
-	console.log('a', traits)
 	result = Object.create(
 		Object::,
 		core.trait.compose(

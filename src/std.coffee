@@ -24,29 +24,33 @@ std = (path, use_modules = true) ->
 		for base_path in std::paths
 			if path.substr(0, 8) == 'import *'
 				return (
-					core: require './' + 'core' + '/__init__.js'
-					site: require './' + 'site' + '/__init__.js'
-					blog: require './' + 'blog' + '/__init__.js'
-					debug: require './' + 'debug' + '/__init__.js'
-					framework: require './' + 'framework' + '/__init__.js'
-					database: require './' + 'database' + '/__init__.js'
+					core: require './' + 'core' + '/__init__'
+					site: require './' + 'site' + '/__init__'
+					blog: require './' + 'blog' + '/__init__'
+					debug: require './' + 'debug' + '/__init__'
+					framework: require './' + 'framework' + '/__init__'
+					database: require './' + 'database' + '/__init__'
 				)
 			else
 				try
 					if path.substr(0, 7) == 'import '
 						path = path.substr 7
 				
-					new_path = base_path + path.replace(/\./g, '/') + '.js'
+					new_path = base_path + path.replace(/\./g, '/') + ''
 					
 					if new_path.search('std') == 0 # fix browserify
 						new_path.replace('std', 'std/lib')
 					
 					success = require new_path
 				catch e
+					console.log e
+					if !e.message
+						throw e
+						
 					if e.message.replace('std/lib/', './') != "Cannot find module '" + new_path + "'"
 						throw e
 					
-					new_path = base_path + path.replace(/\./g, '/') + '/__init__.js'
+					new_path = base_path + path.replace(/\./g, '/') + '/__init__'
 					console.log new_path
 					try
 						success = require new_path
@@ -91,7 +95,7 @@ std_import = (path, use_modules = true) ->
 	if use_modules
 		for base_path in std::paths
 			try
-				new_path = base_path + path.replace(/\./g, '/') + '.js'
+				new_path = base_path + path.replace(/\./g, '/') + ''
 				
 				if new_path.search('std') == 0 # fix browserify
 					new_path.replace('std', 'std/lib')
@@ -100,11 +104,11 @@ std_import = (path, use_modules = true) ->
 			catch e
 				if !e.message
 					throw e
-			
+					
 				if e.message.replace('std/lib/', './') != "Cannot find module '" + new_path + "'"
 					throw e
 					
-				new_path = base_path + path.replace(/\./g, '/') + '/__init__.js'
+				new_path = base_path + path.replace(/\./g, '/') + '/__init__'
 				console.log new_path
 				try
 					success = require new_path

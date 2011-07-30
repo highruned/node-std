@@ -4,7 +4,9 @@ game = std 'import game'
 math = std 'import math'
 
 class server
-	constructor: (@port) ->
+	constructor: (options) ->
+		$.extend(true, @, options)
+		
 		io = require 'socket.io'
 		http = require 'http'
 	
@@ -88,9 +90,7 @@ class server
 					control: false
 
 	server: null
-	port: 0
+	port: null
 	clients: {}
-
-server:: = core.mixin server::, core.base::
 
 exports.server = server

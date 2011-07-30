@@ -16,6 +16,18 @@ string::to_int = () ->
 	
 string::to_hex = () ->
 	return 0
+	
+string::url_encode = () ->
+	return ''
+	
+string::url_decode = () ->
+	return ''
+	
+string::find_and_replace = () ->
+	return ''
+	
+string::to_hex = () ->
+	return ''
 
 string::format = core.vendor.sprintf
 	

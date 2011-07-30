@@ -1,6 +1,8 @@
-core = std('import core')
+core = std 'import core'
 
-class service
+base = core.mixin core.base
+
+class service extends base
 	constructor: () ->
 		
 	setup_model: (model) ->
@@ -36,7 +38,5 @@ class service
 	models: core.collection
 	adapter: null
 	pool: database.connection_pool
-	
-service:: = core.mixin(service::, core.base::)
 
 exports.service = service

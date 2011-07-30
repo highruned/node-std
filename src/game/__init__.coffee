@@ -1,4 +1,5 @@
 exports.object = std_import('game.object').object
+exports.tile = std_import('game.tile').tile
 exports.npc = std_import('game.npc').npc
 exports.creature = std_import('game.creature').creature
 exports.player = std_import('game.player').player

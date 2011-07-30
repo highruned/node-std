@@ -48,7 +48,7 @@ Add your modules to node-std's importer:
 The API is still under construction, and may experience highly volatile changes. 
 
 ## Contribute
-You can find STD in the `src` directory, which is CoffeeScript compiled down to JavaScript in the `lib` directory.
+You can find the library in the `src` directory, which is CoffeeScript compiled down to JavaScript in the `lib` directory.
 
 Command to watch and compile:  
 
@@ -65,7 +65,8 @@ We are aware JavaScript, and by consequence Node.js is traditionally pascal/came
 You can find existing unit tests in the `test` directory.
 
 ## Projects using node-std
-[Nether](https://github.com/ericmuyser/node-nether) (unreleased)
+
+* [Nether](https://github.com/ericmuyser/node-nether) (unreleased)
 
 ## Credits
 Major thanks to the CoffeeScript team.

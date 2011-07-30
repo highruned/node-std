@@ -8,6 +8,8 @@ base = core.mixin core.event_emitter
 
 class world extends base
 	constructor: () ->
+		$.extend(true, @, options)
+		
 		update_camera_position = () =>
 			@camera.viewport.width = $(window).width()
 			@camera.viewport.height = $(window).height()
@@ -30,6 +32,9 @@ class world extends base
 		
 		if !object.id
 			return debug.warn '[game.world] Object id is null.', object, {level: 9}	
+		
+		object.target = @
+		object.model.appendTo(@model)
 		
 		@objects[object.id] = object
 		
