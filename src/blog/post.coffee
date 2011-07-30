@@ -1,15 +1,12 @@
 core = std('import core')
 site = std('import site')
 
-class post
+base = core.mixin site.post
+
+class post extends base
 	constructor: (@name) ->
 
-	move: (millimeters) ->
-		debug.trace @name + " moved " + millimeters + "mm."
-  
-	prompt_color: () ->
-    @set color: '#fff'
-  
-post:: = core.mixin post::, site.post::
+	get_feed: () ->
+	
 
 exports.post = post
